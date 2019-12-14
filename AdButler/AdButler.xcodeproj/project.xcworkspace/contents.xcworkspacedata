@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../AdButler/ABImageView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/AdButler.h">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/AdButler.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/AdButlerCustomExtras.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/AsynchronousOperation.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Cifaddrs.c">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Cifaddrs.h">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Info.plist">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Placement.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Placement+ImageView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Placement+Records.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/PlacementRequestConfig.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/PlacementRequestOperation.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/PlacementResponseOperation.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/RequestManager.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Response.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/ResponseCollector.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/Session.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/UIDevice+AdButler.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AdButler/UIDeviceExtensions.swift">
+   </FileRef>
+   <FileRef
+      location = "self:AdButler.xcodeproj">
+   </FileRef>
+</Workspace>
