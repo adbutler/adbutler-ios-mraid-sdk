@@ -24,7 +24,7 @@ Installation of the adbutler-ios-mraid-sdk can be done manually by building and 
 
 ### Setup
 
-If you plan to use advanced ad types such as MRIAD, your app will need permissions for certain features such as:
+If you plan to use advanced ad types such as MRAID, your app will need permissions for certain features such as:
 
 - Telephony (Send SMS)
 - Photo Library (Save images to gallery)
