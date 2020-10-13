@@ -22,7 +22,7 @@ import AdSupport
     public var keywords: [String] = []
     public var click: String?
     public var advertisingId : String?
-    private var personalizedAdsEnabled: Bool = true
+    private var personalizedAdsEnabled: Bool = false
     public var doNotTrack : Int?
     
     // Device Details
@@ -72,7 +72,7 @@ import AdSupport
 
     
     
-    @objc public init(accountId: Int, zoneId: Int, width: Int, height: Int, personalizedAdsEnabled: Bool = true, keywords: [String] = [], click: String? = nil, customExtras: [AnyHashable: Any]?) {
+    @objc public init(accountId: Int, zoneId: Int, width: Int, height: Int, personalizedAdsEnabled: Bool = false, keywords: [String] = [], click: String? = nil, customExtras: [AnyHashable: Any]?) {
         super.init()
         self.accountId = accountId
         self.zoneId = zoneId
