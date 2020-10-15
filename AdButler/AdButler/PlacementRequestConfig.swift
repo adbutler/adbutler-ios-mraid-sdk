@@ -11,6 +11,7 @@ import CoreTelephony
 import SystemConfiguration
 import CoreLocation
 import AdSupport
+import WebKit
 
 /// Configures the parameters used in requesting a `Placement`.
 @objc public class PlacementRequestConfig: NSObject {
@@ -90,7 +91,7 @@ import AdSupport
         getNetworkData()
         getDeviceData()
         getAppData()
-        self.userAgent = getUserAgent()
+        self.userAgent = UAString.userAgent
         getCustomEventData(customExtras)
     }
     
@@ -112,7 +113,6 @@ import AdSupport
         carrier = networkInfo.subscriberCellularProvider?.carrierName
         carrierCode = networkInfo.subscriberCellularProvider?.mobileNetworkCode
         networkClass = networkInfo.currentRadioAccessTechnology
-        userAgent = getUserAgent()
     }
     
     func getDeviceData(){
@@ -139,13 +139,7 @@ import AdSupport
         appPackageName = Bundle.main.infoDictionary?["CFBundleIdentifier"] as! String?
         language = Locale.preferredLanguages[0]
     }
-    
-    func getUserAgent() -> String? {
-        let webView = UIWebView();
-        webView.loadHTMLString("<html></html>", baseURL: nil)
-        return webView.stringByEvaluatingJavaScript(from: "navigator.userAgent")
-    }
-    
+       
     func getCustomEventData(_ events : [AnyHashable: Any]?){
         if((events) != nil) {
             self.customExtras = events

@@ -17,6 +17,10 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
+    public static func initialize(mainView:UIView) {
+        UAString.init(view: mainView)
+    }
+    
     static var session = Session().urlSession
     
     /**
