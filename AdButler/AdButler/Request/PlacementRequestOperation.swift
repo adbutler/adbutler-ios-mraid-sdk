@@ -45,6 +45,7 @@ class PlacementRequestOperation: AsynchronousOperation {
                 var placements = [Placement]()
                 for (_, v) in placementDictionary {
                     if let placement = Placement(from: v) {
+                        AdButler.frequencyCappingManager.parseResponseData(placement)
                         placements.append(placement)
                     }
                 }
@@ -87,13 +88,33 @@ class PlacementRequestOperation: AsynchronousOperation {
     }
 }
 
+//fileprivate extension PlacementRequestConfig {
+//    func buildRequest(with baseUrl: String) -> URLRequest? {
+//        let urlString = "\(baseUrl)/\(queryString);type=json"
+//        guard let url = URL(string: urlString) else {
+//            return nil
+//        }
+//        return URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
+//    }
+//
+//    func getRefreshRequest(with urlStr: String) -> URLRequest? {
+//        guard let url = URL(string: urlStr) else {
+//            return nil
+//        }
+//        return URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
+//    }
+//}
+
 fileprivate extension PlacementRequestConfig {
     func buildRequest(with baseUrl: String) -> URLRequest? {
-        let urlString = "\(baseUrl)/\(queryString);type=json"
+        let urlString = "\(baseUrl)/\(queryStringPOST)"
         guard let url = URL(string: urlString) else {
             return nil
         }
-        return URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
+        var request = URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
+        request.httpMethod = "POST"
+        request.httpBody = jsonBody;
+        return request
     }
     
     func getRefreshRequest(with urlStr: String) -> URLRequest? {
@@ -103,3 +124,4 @@ fileprivate extension PlacementRequestConfig {
         return URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
     }
 }
+

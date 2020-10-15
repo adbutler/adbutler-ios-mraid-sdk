@@ -11,6 +11,8 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
 
 /// The class used to make requests against the AdButler API.
 @objc public class AdButler: NSObject {
+    public static var frequencyCappingManager: FrequencyCappingManager = FrequencyCappingManager()
+    
     public override init() {
         super.init()
     }
@@ -24,6 +26,9 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacements(with configs: [PlacementRequestConfig], completionHandler: @escaping (Response) -> Void) {
+        for config in configs{
+            config.freqCapData = AdButler.frequencyCappingManager.getData()
+        }
         let requestManager = RequestManager(session: session, baseUrl: baseUrl, configs: configs, completionHandler: completionHandler)
         requestManager.request()
     }
@@ -46,6 +51,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
+        config.freqCapData = AdButler.frequencyCappingManager.getData()
         let requestManager = RequestManager(session: session, baseUrl: baseUrl, config: config, completionHandler: completionHandler)
         requestManager.request()
     }
