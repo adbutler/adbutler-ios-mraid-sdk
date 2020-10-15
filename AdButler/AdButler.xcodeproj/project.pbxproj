@@ -14,6 +14,7 @@
 		BE87D93A2536222200039016 /* FrequencyCappingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D9392536222200039016 /* FrequencyCappingData.swift */; };
 		BE87D93C2536238B00039016 /* FrequencyCappingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D93B2536238B00039016 /* FrequencyCappingManager.swift */; };
 		BE87D93E253763A200039016 /* FrequencyCappingPOSTData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D93D253763A200039016 /* FrequencyCappingPOSTData.swift */; };
+		BE87D9402538CF3300039016 /* UserAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D93F2538CF3300039016 /* UserAgent.swift */; };
 		BEA1FE8221CAB96B00152B15 /* MRAIDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAF2A85212DF04D00865179 /* MRAIDHandler.swift */; };
 		BEA1FE8321CAB96B00152B15 /* MRAIDUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE41D8FE211122BF001B017F /* MRAIDUtilities.swift */; };
 		BEA1FE8421CAB96B00152B15 /* MRAIDBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE41D90021124E2C001B017F /* MRAIDBrowserWindow.swift */; };
@@ -73,6 +74,7 @@
 		BE87D9392536222200039016 /* FrequencyCappingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingData.swift; sourceTree = "<group>"; };
 		BE87D93B2536238B00039016 /* FrequencyCappingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingManager.swift; sourceTree = "<group>"; };
 		BE87D93D253763A200039016 /* FrequencyCappingPOSTData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingPOSTData.swift; sourceTree = "<group>"; };
+		BE87D93F2538CF3300039016 /* UserAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgent.swift; sourceTree = "<group>"; };
 		BE921E6B2130753E00F49805 /* ABMRAIDInterstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABMRAIDInterstitial.swift; sourceTree = "<group>"; };
 		BE921E6D213082EF00F49805 /* MRAIDInterstitialDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRAIDInterstitialDelegate.swift; sourceTree = "<group>"; };
 		BEA1FEA521CAB9A700152B15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -232,6 +234,7 @@
 				BEBE2576207C1DE700D7C655 /* PlacementRequestConfig.swift */,
 				BEBE257E207C1DE700D7C655 /* Response.swift */,
 				BEA7AAD620C5DD56008E43B8 /* Assets.xcassets */,
+				BE87D93F2538CF3300039016 /* UserAgent.swift */,
 			);
 			path = AdButler;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				BEA1FE9221CAB96B00152B15 /* ABBannerView.swift in Sources */,
 				BE7AAB5A23A44994003A32D2 /* ABVASTCompanion.swift in Sources */,
 				BEA1FE9321CAB96B00152B15 /* ABInterstitialView.swift in Sources */,
+				BE87D9402538CF3300039016 /* UserAgent.swift in Sources */,
 				BEA1FE9421CAB96B00152B15 /* ABImageView.swift in Sources */,
 				BEA1FE9521CAB96B00152B15 /* ABVideoPlayer.swift in Sources */,
 				BEA1FE9621CAB96B00152B15 /* UIDevice+AdButler.swift in Sources */,

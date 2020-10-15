@@ -69,6 +69,7 @@ class ViewController: UIViewController , UITextFieldDelegate, ABInterstitialDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AdButler.initialize(mainView: self.view)
         txtAccountID.delegate = self
         txtZoneID.delegate = self
         txtPublisherID.delegate = self
