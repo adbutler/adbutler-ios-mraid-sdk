@@ -36,6 +36,16 @@ In your `info.plist` add:
 
 `App Transport Security Settings > Allow Arbitrary Loads > YES`
 
+### Initialization
+
+In your main view controller, inside of viewDidLoad(), initialize the AdButler class using the main view for the app.
+
+```
+override func viewDidLoad() {
+    AdButler.initialize(mainView: self.view)
+}
+```
+
 ### Banners
 
 Banners will be displayed immediately once they are returned from AdButler’s ad server.  
