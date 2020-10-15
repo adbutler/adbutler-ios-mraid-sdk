@@ -11,6 +11,9 @@
 		BE7AAB5C23A449BB003A32D2 /* ABVASTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5B23A449BB003A32D2 /* ABVASTParser.swift */; };
 		BE7AAB5E23A44A04003A32D2 /* ABPostMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5D23A44A04003A32D2 /* ABPostMessageHandler.swift */; };
 		BE7AAB6023A44BD0003A32D2 /* ABVASTDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5F23A44BD0003A32D2 /* ABVASTDelegate.swift */; };
+		BE87D93A2536222200039016 /* FrequencyCappingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D9392536222200039016 /* FrequencyCappingData.swift */; };
+		BE87D93C2536238B00039016 /* FrequencyCappingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D93B2536238B00039016 /* FrequencyCappingManager.swift */; };
+		BE87D93E253763A200039016 /* FrequencyCappingPOSTData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE87D93D253763A200039016 /* FrequencyCappingPOSTData.swift */; };
 		BEA1FE8221CAB96B00152B15 /* MRAIDHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAF2A85212DF04D00865179 /* MRAIDHandler.swift */; };
 		BEA1FE8321CAB96B00152B15 /* MRAIDUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE41D8FE211122BF001B017F /* MRAIDUtilities.swift */; };
 		BEA1FE8421CAB96B00152B15 /* MRAIDBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE41D90021124E2C001B017F /* MRAIDBrowserWindow.swift */; };
@@ -67,6 +70,9 @@
 		BE7AAB5B23A449BB003A32D2 /* ABVASTParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVASTParser.swift; sourceTree = "<group>"; };
 		BE7AAB5D23A44A04003A32D2 /* ABPostMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPostMessageHandler.swift; sourceTree = "<group>"; };
 		BE7AAB5F23A44BD0003A32D2 /* ABVASTDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVASTDelegate.swift; sourceTree = "<group>"; };
+		BE87D9392536222200039016 /* FrequencyCappingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingData.swift; sourceTree = "<group>"; };
+		BE87D93B2536238B00039016 /* FrequencyCappingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingManager.swift; sourceTree = "<group>"; };
+		BE87D93D253763A200039016 /* FrequencyCappingPOSTData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyCappingPOSTData.swift; sourceTree = "<group>"; };
 		BE921E6B2130753E00F49805 /* ABMRAIDInterstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABMRAIDInterstitial.swift; sourceTree = "<group>"; };
 		BE921E6D213082EF00F49805 /* MRAIDInterstitialDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRAIDInterstitialDelegate.swift; sourceTree = "<group>"; };
 		BEA1FEA521CAB9A700152B15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -154,6 +160,16 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		BE87D9382536220400039016 /* FrequencyCapping */ = {
+			isa = PBXGroup;
+			children = (
+				BE87D9392536222200039016 /* FrequencyCappingData.swift */,
+				BE87D93B2536238B00039016 /* FrequencyCappingManager.swift */,
+				BE87D93D253763A200039016 /* FrequencyCappingPOSTData.swift */,
+			);
+			path = FrequencyCapping;
+			sourceTree = "<group>";
+		};
 		BE9FF3DF210932A70010AED8 /* MRAID */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +212,7 @@
 		BEBE2556207C1D5E00D7C655 /* AdButler */ = {
 			isa = PBXGroup;
 			children = (
+				BE87D9382536220400039016 /* FrequencyCapping */,
 				BED8B98E22245BA300E33116 /* VAST */,
 				BE67929C21431EF7009A1409 /* Assets */,
 				BE9FF3DF210932A70010AED8 /* MRAID */,
@@ -341,6 +358,7 @@
 				BEA1FE8D21CAB96B00152B15 /* Session.swift in Sources */,
 				BEA1FE8E21CAB96B00152B15 /* PlacementRequestOperation.swift in Sources */,
 				BEA1FE8F21CAB96B00152B15 /* PlacementResponseOperation.swift in Sources */,
+				BE87D93C2536238B00039016 /* FrequencyCappingManager.swift in Sources */,
 				BEA1FE9021CAB96B00152B15 /* RequestManager.swift in Sources */,
 				BEA1FE9121CAB96B00152B15 /* ABCustomExtras.swift in Sources */,
 				BE7AAB5E23A44A04003A32D2 /* ABPostMessageHandler.swift in Sources */,
@@ -353,9 +371,11 @@
 				BEA1FE9721CAB96B00152B15 /* UIDeviceExtensions.swift in Sources */,
 				BEA1FE9821CAB96B00152B15 /* StringExtensions.swift in Sources */,
 				BEA1FE9921CAB96B00152B15 /* AdButler.h in Sources */,
+				BE87D93A2536222200039016 /* FrequencyCappingData.swift in Sources */,
 				BEA1FE9A21CAB96B00152B15 /* AdButler.swift in Sources */,
 				BEA1FE9B21CAB96B00152B15 /* ABBanner.swift in Sources */,
 				BE7AAB6023A44BD0003A32D2 /* ABVASTDelegate.swift in Sources */,
+				BE87D93E253763A200039016 /* FrequencyCappingPOSTData.swift in Sources */,
 				BEA1FE9C21CAB96B00152B15 /* ABInterstitial.swift in Sources */,
 				BEA1FE9D21CAB96B00152B15 /* ABErrorCode.swift in Sources */,
 				BEA1FE9F21CAB96C00152B15 /* Placement.swift in Sources */,

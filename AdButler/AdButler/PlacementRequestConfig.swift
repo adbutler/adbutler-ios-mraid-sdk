@@ -22,7 +22,7 @@ import AdSupport
     public var keywords: [String] = []
     public var click: String?
     public var advertisingId : String?
-    private var personalizedAdsEnabled: Bool = true
+    @objc public var personalizedAdsEnabled: Bool = false
     public var doNotTrack : Int?
     
     // Device Details
@@ -69,10 +69,15 @@ import AdSupport
     public var customExtras : [AnyHashable: Any]?
     public var customExtraRaw : String?
     public var customAdServeURL : String?
-
     
+    private let type: String = "json"
     
-    @objc public init(accountId: Int, zoneId: Int, width: Int, height: Int, personalizedAdsEnabled: Bool = true, keywords: [String] = [], click: String? = nil, customExtras: [AnyHashable: Any]?) {
+    public var rct: String?
+    public var rcb: String?
+    
+    public var freqCapData: [FrequencyCappingData]?
+    
+    @objc public init(accountId: Int, zoneId: Int, width: Int, height: Int, personalizedAdsEnabled: Bool = false, keywords: [String] = [], click: String? = nil, customExtras: [AnyHashable: Any]?) {
         super.init()
         self.accountId = accountId
         self.zoneId = zoneId
@@ -162,9 +167,78 @@ import AdSupport
     
 }
 
-
+func json(from object:Any?) -> String? {
+    if(object == nil){
+        return nil
+    }
+    guard let data = try? JSONSerialization.data(withJSONObject: object!, options: []) else {
+        return nil
+    }
+    return String(data: data, encoding: String.Encoding.utf8)
+}
 
 public extension PlacementRequestConfig {
+    
+    var queryStringPOST: String {
+        var query = ""
+        if (customExtras != nil && customExtras!.count > 0) {
+            let jsonData = try? JSONSerialization.data(withJSONObject: customExtras as Any, options: [])
+            let jsonString = String(data: jsonData!, encoding: .utf8)
+            query += ";extra=\(jsonString as String?)"
+        }else if(customExtraRaw != nil){
+            query += ";extra=\(customExtraRaw!)"
+        }
+        let retQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        return retQuery
+    }
+    
+    var jsonBody: Data? {
+        do{
+            let jsonObject: FrequencyCappingPOSTData = FrequencyCappingPOSTData()
+            jsonObject.ID = accountId
+            jsonObject.setID = zoneId
+            jsonObject.width = width
+            jsonObject.height = height
+            jsonObject.kw = keywords
+            jsonObject.click = click
+            jsonObject.aduid = advertisingId
+            jsonObject.dnt = doNotTrack
+            jsonObject.yob = yearOfBirth
+            jsonObject.age = age
+            jsonObject.gender = gender
+            jsonObject.coppa = coppa
+            jsonObject.carrier = carrier
+            jsonObject.carriercode = carrierCode
+            jsonObject.network = networkClass
+            jsonObject.carriercountry = carrierCountryIso
+            jsonObject.lat = latitude
+            jsonObject.long = longitude
+            jsonObject.dvmake = deviceManufacturer
+            jsonObject.dvmodel = deviceModel
+            jsonObject.dvtype = deviceType
+            jsonObject.os = osName
+            jsonObject.osv = osVersion
+            jsonObject.lang = language
+            jsonObject.sw = screenWidth
+            jsonObject.sh = screenHeight
+            jsonObject.spr = screenPixelDensity
+            jsonObject.spdi = screenDotsPerInch
+            jsonObject.ua = userAgent
+            jsonObject.appname = appName
+            jsonObject.appcode = appPackageName
+            jsonObject.appversion = appVersion
+            jsonObject.user_freq = freqCapData
+            jsonObject.rct = rct
+            jsonObject.rcb = rcb
+            
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(jsonObject)
+            return jsonData
+        }catch{
+            print("AdButler :: Error serializing JSON POST data")
+        }
+        return nil
+    }
     
     var queryString: String {
         var query = ";ID=\(accountId);setID=\(zoneId)"

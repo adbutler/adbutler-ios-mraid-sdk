@@ -32,6 +32,8 @@ public extension Placement {
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
                 let imageView = ABImageView(image: image)
+                imageView.contentMode = UIView.ContentMode.scaleAspectFit
+                imageView.backgroundColor = UIColor.white
                 imageView.placement = self
                 complete(imageView)
                 imageView.setupGestures()

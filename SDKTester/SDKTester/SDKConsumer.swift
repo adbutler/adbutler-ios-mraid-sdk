@@ -47,6 +47,7 @@ class SDKConsumer : NSObject {
     
     func getBanner(accountID:Int, zoneID:Int){
         let config = PlacementRequestConfig(accountId: accountID, zoneId: zoneID, width:0, height:0, customExtras:nil)
+        config.personalizedAdsEnabled = true // <-- SDK user should check for permission here
         AdButler.requestPlacement(with: config) { response in
             switch response {
             case .success(_ , let placements):
@@ -75,6 +76,7 @@ class SDKConsumer : NSObject {
     
     func getBanner(accountID:Int, zoneID:Int, container:UIView){
         let config = PlacementRequestConfig(accountId: accountID, zoneId: zoneID, width:0, height:0, customExtras:nil)
+        config.personalizedAdsEnabled = true // <-- SDK user should check for permission here
         AdButler.requestPlacement(with: config) { response in
             switch response {
             case .success(_ , let placements):
@@ -119,7 +121,7 @@ class SDKConsumer : NSObject {
                     self.log("Error - Invalid placement")
                     return
                 }
-                if(placements[0].body != nil && placements[0].body != ""){
+                if((placements[0].body != nil && placements[0].body != "") || placements[0].imageUrl != nil){
                     self.interstitial = ABInterstitial(placement:placements[0], parentViewController:self.parentViewController, delegate:self.interstitialDelegate!, respectSafeAreaLayoutGuide:true)
                 }
             default:

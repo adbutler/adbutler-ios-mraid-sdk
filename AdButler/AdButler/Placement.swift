@@ -36,10 +36,18 @@ import Foundation
     public let body: String?
     /// List of Beacons for server to server network events
     public let beacons: [[String: String]]?
+    /// Frequency capping data
+    public let placementId: String?
+    public let views: String?
+    public let start: String?
+    public let expiry: String?
+    /// refresh variables
+    public let rct:String?
+    public let rcb:String?
     
     internal var clicked: Bool = false
     
-    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String?, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil, beacons: [[String: String]]? = nil) {
+    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String?, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil, beacons: [[String: String]]? = nil, placementId: String? = nil, views: String? = nil, start: String? = nil, expiry: String? = nil, rct: String? = nil, rcb: String? = nil) {
         self.bannerId = bannerId
         self.redirectUrl = redirectUrl
         self.imageUrl = imageUrl
@@ -53,6 +61,12 @@ import Foundation
         self.refreshTime = refreshTime
         self.body = body
         self.beacons = beacons
+        self.placementId = placementId
+        self.views = views;
+        self.start = start;
+        self.expiry = expiry;
+        self.rct = rct;
+        self.rcb = rcb;
     }
 }
 
@@ -95,10 +109,16 @@ public extension Placement {
         let refreshTime = mapBlankToNil(jsonDictionary["refresh_time"] as? String)
         let body = mapBlankToNil(jsonDictionary["body"] as? String)
         let beacons = jsonDictionary["beacons"] as? [[String: String]]
+        let placementId = mapBlankToNil(jsonDictionary["placement_id"] as? String)
+        let views = mapBlankToNil(jsonDictionary["user_frequency_views"] as? String)
+        let start = mapBlankToNil(jsonDictionary["user_frequency_start"] as? String)
+        let expiry = mapBlankToNil(jsonDictionary["user_frequency_expiry"] as? String)
+        let rct = mapBlankToNil(jsonDictionary["rct"] as? String)
+        let rcb = mapBlankToNil(jsonDictionary["rcb"] as? String)
         
         let altText = mapBlankToNil(jsonDictionary["altText"] as? String)
         
-        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target as! String, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body, beacons: beacons)
+        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target as! String, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body, beacons: beacons, placementId: placementId, views: views, start: start, expiry: expiry, rct: rct, rcb: rcb)
     }
     
     var isValid:Bool {

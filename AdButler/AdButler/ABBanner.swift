@@ -129,50 +129,47 @@ import Foundation
             NSLog("AdButler", "You must construct a ABBanner with a PlacementRequestConfig in order to support zone refreshing.")
             return;
         }
-        if(self.placement?.refreshUrl == nil){
+        if(self.placement?.rcb == nil || self.placement?.rct == nil){
             self.timer?.invalidate()
             return
         }
         if(self.placement != nil){
-            AdButler.refreshPlacement(with:self.placement!, config:self.placementRequestConfig!) { response in
+            self.placementRequestConfig!.rcb = self.placement!.rcb
+            self.placementRequestConfig!.rct = self.placement!.rct
+            AdButler.requestPlacement(with:self.placementRequestConfig!) { response in
                 switch response {
                 case .success(_ , let placements):
-                    do {
-                        guard placements.count == 1 else {
+                    guard placements.count == 1 else {
+                        return
+                    }
+                    guard placements[0].isValid else {
+                        return
+                    }
+                    self.placement = placements[0]
+                    self.placement!.getImageView { imageView in
+                        if(self.imageView == nil){
+                            self.destroy()
                             return
                         }
-                        guard placements[0].isValid else {
+                        let view = self.imageView!.superview
+                        if(view == nil){
+                            self.destroy()
                             return
-                        }
-                        self.placement = placements[0]
-                        try self.placement!.getImageView { imageView in
-                            if(self.imageView == nil){
-                                self.destroy()
-                                return
-                            }
-                            let view = self.imageView!.superview
-                            if(view == nil || imageView == nil){
-                                self.destroy()
-                                return
+                        }else{
+                            self.imageView!.removeFromSuperview()
+                            self.imageView = imageView
+                            view?.addSubview(self.imageView!)
+                            self.placement!.recordImpression()
+                            if(self.refreshToContainer){
+                                self.imageView!.frame = CGRect(x:0, y:0, width:view!.frame.width, height:view!.frame.height)
+                                NSLayoutConstraint.activate([
+                                    self.imageView!.heightAnchor.constraint(equalTo:view!.heightAnchor),
+                                    self.imageView!.widthAnchor.constraint(equalTo:view!.widthAnchor)
+                                    ])
                             }else{
-                                self.imageView!.removeFromSuperview()
-                                self.imageView = imageView
-                                view?.addSubview(self.imageView!)
-                                self.placement!.recordImpression()
-                                if(self.refreshToContainer){
-                                    self.imageView!.frame = CGRect(x:0, y:0, width:view!.frame.width, height:view!.frame.height)
-                                    NSLayoutConstraint.activate([
-                                        self.imageView!.heightAnchor.constraint(equalTo:view!.heightAnchor),
-                                        self.imageView!.widthAnchor.constraint(equalTo:view!.widthAnchor)
-                                        ])
-                                }else{
-                                    self.imageView!.frame = self.getFrameFromPlacement()
-                                }
+                                self.imageView!.frame = self.getFrameFromPlacement()
                             }
                         }
-                    } catch {
-                        // Something is missing in our banner.  (Maybe reference to it was lost)
-                        self.destroy()
                     }
                 case .badRequest(let statusCode, let responseBody):
                     return
