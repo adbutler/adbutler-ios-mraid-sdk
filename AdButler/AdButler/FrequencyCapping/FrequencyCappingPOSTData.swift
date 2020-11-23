@@ -50,10 +50,11 @@ public class FrequencyCappingPOSTData : Codable {
     public var appversion : String?
     public var lang : String?
 
-    public let type: String = "json"
+    public var type: String = "json"
 
     public var rct: String?
     public var rcb: String?
 
     public var user_freq: [FrequencyCappingData]?
+    public var _abdk_json: String?
 }

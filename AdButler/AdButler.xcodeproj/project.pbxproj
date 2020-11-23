@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE734E4825684E180027CC4D /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE734E4725684E180027CC4D /* Encoding.swift */; };
+		BE734E4B256C34A00027CC4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE734E4A256C34A00027CC4D /* Data.swift */; };
 		BE7AAB5A23A44994003A32D2 /* ABVASTCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5923A44994003A32D2 /* ABVASTCompanion.swift */; };
 		BE7AAB5C23A449BB003A32D2 /* ABVASTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5B23A449BB003A32D2 /* ABVASTParser.swift */; };
 		BE7AAB5E23A44A04003A32D2 /* ABPostMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5D23A44A04003A32D2 /* ABPostMessageHandler.swift */; };
@@ -67,6 +69,8 @@
 		BE6792A3215176E6009A1409 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		BE6792A521517937009A1409 /* ABBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABBanner.swift; sourceTree = "<group>"; };
 		BE6DEBD320D99F6F00145E64 /* ABImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABImageView.swift; sourceTree = "<group>"; };
+		BE734E4725684E180027CC4D /* Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
+		BE734E4A256C34A00027CC4D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		BE7AAB5923A44994003A32D2 /* ABVASTCompanion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVASTCompanion.swift; sourceTree = "<group>"; };
 		BE7AAB5B23A449BB003A32D2 /* ABVASTParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABVASTParser.swift; sourceTree = "<group>"; };
 		BE7AAB5D23A44A04003A32D2 /* ABPostMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABPostMessageHandler.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				BEBE2570207C1DE600D7C655 /* UIDevice+AdButler.swift */,
 				BEBE2572207C1DE600D7C655 /* UIDeviceExtensions.swift */,
 				BE6792A3215176E6009A1409 /* StringExtensions.swift */,
+				BE734E4725684E180027CC4D /* Encoding.swift */,
+				BE734E4A256C34A00027CC4D /* Data.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +367,7 @@
 				BEA1FE8D21CAB96B00152B15 /* Session.swift in Sources */,
 				BEA1FE8E21CAB96B00152B15 /* PlacementRequestOperation.swift in Sources */,
 				BEA1FE8F21CAB96B00152B15 /* PlacementResponseOperation.swift in Sources */,
+				BE734E4B256C34A00027CC4D /* Data.swift in Sources */,
 				BE87D93C2536238B00039016 /* FrequencyCappingManager.swift in Sources */,
 				BEA1FE9021CAB96B00152B15 /* RequestManager.swift in Sources */,
 				BEA1FE9121CAB96B00152B15 /* ABCustomExtras.swift in Sources */,
@@ -387,6 +394,7 @@
 				BEA1FEA121CAB96C00152B15 /* Placement+Records.swift in Sources */,
 				BED8B99022245BFB00E33116 /* ABVASTVideo.swift in Sources */,
 				BEA1FEA221CAB96C00152B15 /* PlacementRequestConfig.swift in Sources */,
+				BE734E4825684E180027CC4D /* Encoding.swift in Sources */,
 				BEA1FEA321CAB96C00152B15 /* Response.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

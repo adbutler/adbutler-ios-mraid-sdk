@@ -114,6 +114,7 @@ fileprivate extension PlacementRequestConfig {
         var request = URLRequest(url: url, cachePolicy:NSURLRequest.CachePolicy.reloadIgnoringCacheData)
         request.httpMethod = "POST"
         request.httpBody = jsonBody;
+        request.log()
         return request
     }
     
