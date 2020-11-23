@@ -76,6 +76,8 @@ import WebKit
     public var rct: String?
     public var rcb: String?
     
+    public var dataKeys: [String: Any]?
+    
     public var freqCapData: [FrequencyCappingData]?
     
     @objc public init(accountId: Int, zoneId: Int, width: Int, height: Int, personalizedAdsEnabled: Bool = false, keywords: [String] = [], click: String? = nil, customExtras: [AnyHashable: Any]?) {
@@ -224,9 +226,13 @@ public extension PlacementRequestConfig {
             jsonObject.user_freq = freqCapData
             jsonObject.rct = rct
             jsonObject.rcb = rcb
-            
             let jsonEncoder = JSONEncoder()
+            if(dataKeys != nil){
+                let data = try JSONSerialization.data(withJSONObject: dataKeys!, options: [])
+                jsonObject._abdk_json = data.toString()
+            }
             let jsonData = try jsonEncoder.encode(jsonObject)
+            
             return jsonData
         }catch{
             print("AdButler :: Error serializing JSON POST data")
