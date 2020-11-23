@@ -3,7 +3,7 @@
 //  AdButler
 //
 //  Created by Will Prevett on 2020-11-20.
-//  Copyright © 2020 Will Prevett. All rights reserved.
+//  Copyright © 2020 AdButler. All rights reserved.
 //
 
 import Foundation
