@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE420BA925F9862E000F7A12 /* iOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE420BA825F9862E000F7A12 /* iOSDevCenters+GIF.swift */; };
 		BE734E4825684E180027CC4D /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE734E4725684E180027CC4D /* Encoding.swift */; };
 		BE734E4B256C34A00027CC4D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE734E4A256C34A00027CC4D /* Data.swift */; };
 		BE7AAB5A23A44994003A32D2 /* ABVASTCompanion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7AAB5923A44994003A32D2 /* ABVASTCompanion.swift */; };
@@ -64,6 +65,7 @@
 		BE3BC00B215EC1C00018BF74 /* ABInterstitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ABInterstitial.swift; sourceTree = "<group>"; };
 		BE41D8FE211122BF001B017F /* MRAIDUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRAIDUtilities.swift; sourceTree = "<group>"; };
 		BE41D90021124E2C001B017F /* MRAIDBrowserWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRAIDBrowserWindow.swift; sourceTree = "<group>"; };
+		BE420BA825F9862E000F7A12 /* iOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "iOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
 		BE67929A21431AB1009A1409 /* mraid.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = mraid.js; sourceTree = "<group>"; };
 		BE6792A1215169A7009A1409 /* ABErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABErrorCode.swift; sourceTree = "<group>"; };
 		BE6792A3215176E6009A1409 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				BE6792A3215176E6009A1409 /* StringExtensions.swift */,
 				BE734E4725684E180027CC4D /* Encoding.swift */,
 				BE734E4A256C34A00027CC4D /* Data.swift */,
+				BE420BA825F9862E000F7A12 /* iOSDevCenters+GIF.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				BEA1FE9821CAB96B00152B15 /* StringExtensions.swift in Sources */,
 				BEA1FE9921CAB96B00152B15 /* AdButler.h in Sources */,
 				BE87D93A2536222200039016 /* FrequencyCappingData.swift in Sources */,
+				BE420BA925F9862E000F7A12 /* iOSDevCenters+GIF.swift in Sources */,
 				BEA1FE9A21CAB96B00152B15 /* AdButler.swift in Sources */,
 				BEA1FE9B21CAB96B00152B15 /* ABBanner.swift in Sources */,
 				BE7AAB6023A44BD0003A32D2 /* ABVASTDelegate.swift in Sources */,
