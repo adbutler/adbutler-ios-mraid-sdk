@@ -30,7 +30,8 @@ public extension Placement {
             }
             
             DispatchQueue.main.async {
-                let image = UIImage(data: data)
+                let type = httpResponse.allHeaderFields["Content-Type"] as? String
+                let image = type == "image/gif" ? UIImage.gifImageWithData(data) : UIImage(data:data)
                 let imageView = ABImageView(image: image)
                 imageView.contentMode = UIView.ContentMode.scaleAspectFit
                 imageView.backgroundColor = UIColor.white
