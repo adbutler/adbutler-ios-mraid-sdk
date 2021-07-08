@@ -18,7 +18,7 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
     internal var closeButtonRequired:Bool = false
     internal var postMessageHandler:ABPostMessageHandler!
     
-    private let baseURL = "http://servedbyadbutler.com"
+    private let baseURL = "https://servedbyadbutler.com"
     
     struct Source {
         public var source:String!
@@ -50,10 +50,10 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
             <html>
             <head>
                 <meta name="viewport" content="initial-scale=1.0" />
-                <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
-                <script src="http://vjs.zencdn.net/4.12/video.js"></script>
+                <link href="https://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+                <script src="https://vjs.zencdn.net/4.12/video.js"></script>
                 <link href="\(baseURL)/videojs-vast-vpaid/bin/videojs.vast.vpaid.min.css?v=7" rel="stylesheet">
-                <script src="\(baseURL)/videojs-vast-vpaid/bin/videojs_4.vast.vpaid.js?v=17"></script>
+                <script src="\(baseURL)/videojs-vast-vpaid/bin/videojs_4.vast.vpaid.js?v=18"></script>
             </head>
             <body style="margin:0px; background-color:black">
             <video id="av_video" class="video-js vjs-default-skin"
@@ -81,7 +81,7 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
         str += """
         <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a web browser that
-        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
         </p>
         </video>
         </body>
@@ -130,7 +130,7 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
         container.addSubview(webView!)
         
         let body = self.getVideoJSMarkup()
-        webView!.loadHTMLString(body, baseURL:URL(string:"http://ssp-r.phunware.com/"))
+        webView!.loadHTMLString(body, baseURL:URL(string:"https://servedbyadbutler.com/"))
     }
 
     
@@ -164,7 +164,7 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
                         decidePolicyFor navigationAction: WKNavigationAction,
                         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let url = navigationAction.request.url?.absoluteString
-        if(url != nil && !url!.starts(with:"about:blank") && url! != "https://ssp-r.phunware.com/" && url! != "http://ssp-r.phunware.com/"){
+        if(url != nil && !url!.starts(with:"about:blank") && url! != "https://servedbyadbutler.com/" && url! != "http://servedbyadbutler.com/"){
 //            if (url!.range(of:"vast://") != nil){
 //                if(url!.range(of:"vastresponse?xml=") != nil){
 //                    let range = url!.range(of:"vast://vastresponse?xml=")
