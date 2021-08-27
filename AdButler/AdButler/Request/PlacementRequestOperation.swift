@@ -107,6 +107,7 @@ class PlacementRequestOperation: AsynchronousOperation {
 
 fileprivate extension PlacementRequestConfig {
     func buildRequest(with baseUrl: String) -> URLRequest? {
+        AdButler.incrementUniqueDelivery(zoneId)
         let urlString = "\(baseUrl)/\(queryStringPOST)"
         guard let url = URL(string: urlString) else {
             return nil
@@ -118,6 +119,7 @@ fileprivate extension PlacementRequestConfig {
     }
     
     func getRefreshRequest(with urlStr: String) -> URLRequest? {
+        AdButler.incrementUniqueDelivery(zoneId)
         guard let url = URL(string: urlStr) else {
             return nil
         }
