@@ -12,6 +12,16 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
 /// The class used to make requests against the AdButler API.
 @objc public class AdButler: NSObject {
     public static var frequencyCappingManager: FrequencyCappingManager = FrequencyCappingManager()
+    private static var pageID: Int = 0
+    private static var zonePlaceMap: [Int : Int] = [Int : Int]()
+    
+    public static func getPageID() -> Int {
+        return pageID
+    }
+    
+    public static func getPlace(_ zoneID:Int) -> Int {
+        return zonePlaceMap[zoneID] ?? 0
+    }
     
     public override init() {
         super.init()
@@ -19,9 +29,27 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     
     public static func initialize(mainView:UIView) {
         UAString.init(view: mainView)
+        resetUniqueDelivery()
     }
     
     static var session = Session().urlSession
+    
+    public static func resetUniqueDelivery() -> Void {
+        var number:String = String()
+        for _ in 1...7 {
+           number += "\(Int.random(in: 1...9))"
+        }
+        pageID = Int(number)!
+        zonePlaceMap = [Int: Int]()
+    }
+    
+    public static func incrementUniqueDelivery(_ zoneID:Int) -> Void {
+        if(zonePlaceMap[zoneID] != nil) {
+            zonePlaceMap[zoneID]! += 1
+        } else {
+            zonePlaceMap[zoneID] = 0
+        }
+    }
     
     /**
      Requests multiple placements.

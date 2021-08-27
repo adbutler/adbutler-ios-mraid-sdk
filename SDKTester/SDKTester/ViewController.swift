@@ -205,6 +205,7 @@ class ViewController: UIViewController , UITextFieldDelegate, ABInterstitialDele
     }
     @IBAction func onDismissClick(_ sender: Any) {
         sdk.banner?.destroy()
+        AdButler.resetUniqueDelivery()
         btnDismiss.isHidden = true
     }
     

@@ -226,6 +226,8 @@ public extension PlacementRequestConfig {
             jsonObject.user_freq = freqCapData
             jsonObject.rct = rct
             jsonObject.rcb = rcb
+            jsonObject.pid = AdButler.getPageID()
+            jsonObject.place = AdButler.getPlace(zoneId)
             let jsonEncoder = JSONEncoder()
             if(dataKeys != nil){
                 let data = try JSONSerialization.data(withJSONObject: dataKeys!, options: [])
@@ -294,6 +296,8 @@ public extension PlacementRequestConfig {
         if let click = click {
             query += ";click=\(click)"
         }
+        query += ";pid=\(AdButler.getPageID())"
+        query += ";place=\(AdButler.getPlace(zoneId))"
         
         // URL Encode query string
         let retQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
