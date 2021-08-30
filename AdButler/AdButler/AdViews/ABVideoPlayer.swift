@@ -136,6 +136,22 @@ public class ABVideoPlayer: UIViewController, WKUIDelegate, WKNavigationDelegate
         return
     }
     
+    public func requestURLFromParent(_url url:String) {
+        if(url != nil && !url.starts(with:"about:blank") && url != "https://servedbyadbutler.com/" && url != "http://servedbyadbutler.com/"){
+            NSLog("Requesting URL -- " + url)
+            let browser = MRAIDBrowserWindow()
+            browser.initialize()
+            browser.loadUrl(url)
+            browser.onClose(perform:{() in
+                self.vastDelegate?.onBrowserClosing()
+                MRAIDUtilities.setRootController(self.originalRootController!)
+                self.onClose()
+            })
+            self.vastDelegate?.onBrowserOpening()
+            MRAIDUtilities.setRootController(browser)
+        }
+    }
+    
     public func playVideo(_ url:URL, onClose:@escaping () -> Void){
         self.initialize(onClose:onClose);
         let request:URLRequest = URLRequest(url:url)

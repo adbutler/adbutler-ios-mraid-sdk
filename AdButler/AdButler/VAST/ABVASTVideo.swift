@@ -105,7 +105,11 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
     
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         // Capture window.open (clickthroughs) and redirect
-        webView.load(navigationAction.request)
+        //webView.load(navigationAction.request)
+        if(navigationAction.request.url != nil) {
+            videoPlayer.requestURLFromParent(_url: navigationAction.request.url!.absoluteString)
+        }
+    
         return nil
     }
     
