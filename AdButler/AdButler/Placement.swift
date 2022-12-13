@@ -47,7 +47,10 @@ import Foundation
     
     internal var clicked: Bool = false
     
-    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String?, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil, beacons: [[String: String]]? = nil, placementId: String? = nil, views: String? = nil, start: String? = nil, expiry: String? = nil, rct: String? = nil, rcb: String? = nil) {
+    /// Optional URL beacons for server to server events.
+    public let metadata: [[String: String]]?
+    
+    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String?, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil, beacons: [[String: String]]? = nil, placementId: String? = nil, views: String? = nil, start: String? = nil, expiry: String? = nil, rct: String? = nil, rcb: String? = nil, metadata: [[String: String]]? = nil) {
         self.bannerId = bannerId
         self.redirectUrl = redirectUrl
         self.imageUrl = imageUrl
@@ -67,6 +70,7 @@ import Foundation
         self.expiry = expiry;
         self.rct = rct;
         self.rcb = rcb;
+        self.metadata = metadata
     }
 }
 
@@ -117,8 +121,9 @@ public extension Placement {
         let rcb = mapBlankToNil(jsonDictionary["rcb"] as? String)
         
         let altText = mapBlankToNil(jsonDictionary["altText"] as? String)
+        let metadata = jsonDictionary["metadata"] as? [[String: String]]
         
-        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target as! String, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body, beacons: beacons, placementId: placementId, views: views, start: start, expiry: expiry, rct: rct, rcb: rcb)
+        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target as! String, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body, beacons: beacons, placementId: placementId, views: views, start: start, expiry: expiry, rct: rct, rcb: rcb, metadata: metadata)
     }
     
     var isValid:Bool {

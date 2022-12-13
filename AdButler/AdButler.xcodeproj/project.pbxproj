@@ -312,7 +312,7 @@
 					New,
 				);
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "Will Prevett";
 				TargetAttributes = {
 					BEBE2553207C1D5E00D7C655 = {

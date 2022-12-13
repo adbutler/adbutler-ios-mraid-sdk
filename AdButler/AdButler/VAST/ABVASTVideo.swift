@@ -5,6 +5,7 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
     
     private var rect:CGRect?
     private var webView:WKWebView?
+    private var containerView:UIView?
     private var zoneID:Int!
     private var accountID:Int!
     private var publisherID:Int!
@@ -26,6 +27,20 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
     }
     
     public func initialize(accountID:Int, zoneID:Int, publisherID:Int, delegate:ABVASTDelegate?, orientationMask:UIInterfaceOrientationMask? = nil, poster:String? = ""){
+        self.zoneID = zoneID
+        self.accountID = accountID
+        self.publisherID = publisherID
+        self.poster = poster
+        self.vastDelegate = delegate
+        self.postMessageHandler = ABPostMessageHandler()
+        self.postMessageHandler.initialize(vast:self)
+        if(orientationMask != nil){
+            self.orientationMask = orientationMask!
+        }
+    }
+    
+    public func initialize(webView:UIView, accountID:Int, zoneID:Int, publisherID:Int, delegate:ABVASTDelegate?, orientationMask:UIInterfaceOrientationMask? = nil, poster:String? = ""){
+        self.containerView = webView
         self.zoneID = zoneID
         self.accountID = accountID
         self.publisherID = publisherID
@@ -90,19 +105,6 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
         return str
     }
     
-    public func play(){
-        videoPlayer = ABVideoPlayer()
-        videoPlayer.addCloseButtonToVideo = false
-        self.videoPlayer.setOrientationMask(self.orientationMask)
-        let body = self.getVideoJSMarkup()
-        let previousRootController = UIApplication.shared.delegate?.window??.rootViewController
-        MRAIDUtilities.setRootController(videoPlayer)
-        videoPlayer.playHTMLVideo(body, delegate:self.vastDelegate, onClose: {() in
-            MRAIDUtilities.setRootController(previousRootController!)
-            self.videoPlayer.dismiss(animated:false, completion:nil)
-        })
-    }
-    
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         // Capture window.open (clickthroughs) and redirect
         //webView.load(navigationAction.request)
@@ -155,14 +157,34 @@ public class ABVASTVideo : NSObject, WKUIDelegate, WKNavigationDelegate {
         videoPlayer.addCloseButtonToVideo = self.closeButtonRequired
         self.videoPlayer.setOrientationMask(self.orientationMask)
         let previousRootController = UIApplication.shared.delegate?.window??.rootViewController
-        MRAIDUtilities.setRootController(videoPlayer)
-        videoPlayer.playPreloadedVideo(self.webView!, onClose: {() in
-            MRAIDUtilities.setRootController(previousRootController!)
-            self.videoPlayer = nil
-        })
+        if(containerView === nil) {
+            MRAIDUtilities.setRootController(videoPlayer)
+            videoPlayer.playPreloadedVideo(self.webView!, container:nil, onClose: {() in
+                MRAIDUtilities.setRootController(previousRootController!)
+                self.videoPlayer = nil
+            })
+        }else {
+            containerView!.addSubview(videoPlayer.view)
+            videoPlayer.playPreloadedVideo(self.webView!, container:containerView!, onClose: {() in
+                self.videoPlayer = nil
+            })
+        }
         self.webView = nil
     }
     
+    
+//    public func display(){
+//        if(!self.ready){
+//            return
+//        }
+//        videoPlayer = ABVideoPlayer()
+//        videoPlayer.addCloseButtonToVideo = self.closeButtonRequired
+//        self.videoPlayer.setOrientationMask(self.orientationMask)
+//        videoPlayer.playPreloadedVideo(self.webView!, onClose: {() in
+//            self.videoPlayer = nil
+//        })
+//        self.webView = nil
+//    }
        
     public func webView(_ webView: WKWebView,
                         decidePolicyFor navigationAction: WKNavigationAction,

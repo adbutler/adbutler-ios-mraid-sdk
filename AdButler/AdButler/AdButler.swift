@@ -27,8 +27,10 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
-    public static func initialize(mainView:UIView) {
-        UAString.init(view: mainView)
+    public static func initialize(mainView:UIView?) {
+        if(mainView !== nil){
+            UAString.init(view: mainView!)
+        }
         resetUniqueDelivery()
     }
     

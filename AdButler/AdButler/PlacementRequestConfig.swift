@@ -25,6 +25,7 @@ import WebKit
     public var advertisingId : String?
     @objc public var personalizedAdsEnabled: Bool = false
     public var doNotTrack : Int?
+    public var sdkVersion: String = "ios.2.0.4"
     
     // Device Details
     public var deviceManufacturer : String? = "Apple"
@@ -298,6 +299,7 @@ public extension PlacementRequestConfig {
         }
         query += ";pid=\(AdButler.getPageID())"
         query += ";place=\(AdButler.getPlace(zoneId))"
+        query += ";sdkVersion=\(sdkVersion)"
         
         // URL Encode query string
         let retQuery = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""

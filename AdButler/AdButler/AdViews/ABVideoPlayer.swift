@@ -47,21 +47,25 @@ public class ABVideoPlayer: UIViewController, WKUIDelegate, WKNavigationDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     
-    public func initialize(webView:WKWebView, onClose:@escaping()->Void){
+    public func initialize(webView:WKWebView, container:UIView? = nil, onClose:@escaping()->Void){
         self.originalRootController = UIApplication.shared.delegate?.window??.rootViewController
         
         self.onClose = onClose
         let fullScreenSize = CGRect(x:0, y:0, width:UIScreen.main.bounds.width, height:UIScreen.main.bounds.height)
-    
+        let containerRect = container?.frame
+        
         videoView = webView;
-        videoView!.frame = fullScreenSize;
-        
-        view.autoresizesSubviews = true
+        if (container !== nil) {
+            videoView!.frame = containerRect!
+            addCloseButtonToVideo = false
+        }else {
+            view.autoresizesSubviews = true
+            videoView!.frame = fullScreenSize;
+            view.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth, .flexibleHeight]
+            videoView!.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth, .flexibleHeight]
+        }
+                
         view.isUserInteractionEnabled = true
-        view.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth, .flexibleHeight]
-        
-        videoView!.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth, .flexibleHeight]
-        
         view.addSubview(videoView!)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -161,8 +165,8 @@ public class ABVideoPlayer: UIViewController, WKUIDelegate, WKNavigationDelegate
         }
     }
     
-    public func playPreloadedVideo(_ webView:WKWebView, onClose:@escaping() -> Void){
-        self.initialize(webView:webView, onClose:onClose);
+    public func playPreloadedVideo(_ webView:WKWebView, container:UIView?, onClose:@escaping() -> Void){
+        self.initialize(webView:webView, container:container, onClose:onClose);
         let js = "document.getElementById('av_video').player.play();"
         self.videoView!.evaluateJavaScript(js, completionHandler: nil)
         if(addCloseButtonToVideo){
@@ -198,6 +202,7 @@ public class ABVideoPlayer: UIViewController, WKUIDelegate, WKNavigationDelegate
     }
     
     internal func addCloseButton(){
+        
         let w = videoView!.bounds.width
         let closeW = CGFloat(50)
         let closeH = CGFloat(50)
